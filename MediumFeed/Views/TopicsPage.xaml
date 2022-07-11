@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MediumFeed.ViewModels"
+             xmlns:behaviors="clr-namespace:MediumFeed.Views.Behaviors"
+             x:Class="MediumFeed.Views.TopicsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:TopicsVM x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Source={StaticResource vm}, Path=TopicsCollection}">
+            <ListView.Behaviors>
+                <behaviors:TopicListViewBehavior />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="16,0">
+                            <Label Text="{Binding DisplayName}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
